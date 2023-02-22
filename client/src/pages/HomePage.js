@@ -1,6 +1,26 @@
-import React from "react"
-
+import React, {useEffect} from "react";
+import axios from "axios";
 const Homepage = () =>{
+    const getUserData = async() => 
+    {
+        try
+        {
+            const res = await axios.post('/api/v1/user/getUserData', {}, 
+            {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                },
+            });
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
+    };
+    useEffect(() => {
+     getUserData();   
+    }, []);
+
     return (
         <React.Fragment>
             <h1> Appointment Scheduler BPGC</h1>
