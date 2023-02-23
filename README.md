@@ -1,4 +1,4 @@
 # Appointment-Scheduler-MERN-stack
 
 Tools used:
-Vs code, mongodbcompass, express, react js, node js
+Vs code, mongodbcompass, express, react js, node js, redux toolkit
