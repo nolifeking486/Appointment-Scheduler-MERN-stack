@@ -32,7 +32,6 @@ const loginController = async (req, res) => {
   try {
     const user = await userModel.findOne({ email: req.body.email });
     if (!user) {
-      console.log(user);
       return res
         .status(200)
         .send({ message: "User not found", success: false });
@@ -43,48 +42,40 @@ const loginController = async (req, res) => {
         .status(200)
         .send({ message: "Invalid Email or Password", success: false });
     }
-    const token = jwt.sign({ id: user.__id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
-    res.status(200).send({ message: "Login Success", success: true, token });
+    const { name, email } = user;
+    res.status(200).send({ message: "Login Success", success: true, token, name, email });
   } catch (error) {
     console.log(error);
     res.status(500).send({ message: `Error in Login CTRL ${error.message}` });
   }
 };
-const authController = async (req,res) => 
-{
-  try
-  {
-    const user = await userModel.findOne({ _id: req.body.userId});
-    if(!user)
-    {
+
+const authController = async (req, res) => {
+  try {
+    const user = await userModel.findById({ _id: req.body.userId });
+    user.password = undefined;
+    if (!user) {
       return res.status(200).send({
         message: "User not found",
         success: false,
       });
-    }
-    else
-    {
+    } else {
       res.status(200).send({
         success: true,
-        data: {
-          name: user.name,
-          email: user.email,
-        },
+        data: user,
       });
     }
-  }
-  catch(error)
-  {
+  } catch (error) {
     console.log(error);
-    res.status(500).send(
-      {
-        message: "Auth Error",
-        success: false,
-        error,
-      }
-    );
+    res.status(500).send({
+      message: "Auth error",
+      success: false,
+      error,
+    });
   }
 };
-module.exports = {loginController, registerController, authController};
+
+module.exports = { loginController, registerController, authController };

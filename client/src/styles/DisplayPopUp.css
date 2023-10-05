@@ -1,0 +1,27 @@
+.status-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .status-icon {
+    margin-right: 10px;
+    font-size: 20px;
+    vertical-align: middle;
+  }
+  
+  .green {
+    color: green;
+  }
+  
+  .red {
+    color: red;
+  }
+  
+  .status-text {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    vertical-align: middle;
+  }
+  

@@ -1,0 +1,52 @@
+.customCardAppointment {
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    margin: 15px;
+  }
+
+  .customCardAppointment .header-style {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #e4e4e4;
+    color: #000;
+    height: 40px;
+  }
+  
+  .customCardAppointment .header-style svg {
+    height: 20px;
+    width: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  
+  .header-style {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    background-color: #f7f7f7;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 10px;
+  }
+  
+  .status-icon {
+    margin-right: 10px;
+    font-size: 1.2em;
+  }
+  
+  .approved-icon {
+    color: green;
+  }
+  
+  .rejected-icon {
+    color: red;
+  }
+  
+  .pending-icon {
+    color: grey;
+  }
+  

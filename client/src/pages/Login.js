@@ -18,10 +18,13 @@ const Login = () =>{
         {   
             dispatch(showLoading());
             const res = await axios.post('/api/v1/user/login', values)
+            window.location.reload();
             dispatch(hideLoading());
             if(res.data.success)
             {
                 localStorage.setItem("token", res.data.token)
+                localStorage.setItem("name", res.data.name)
+                localStorage.setItem("email", res.data.email)
                 message.success("Login Successful")
                 navigate("/")
             }
